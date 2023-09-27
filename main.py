@@ -17,7 +17,7 @@ def find_past_odd_months(current_date, num_months):
     while num_months > 0:
         # Calculate the month to check, starting from the current month
         current_month -= 1
-    # We check if current_month has gone below 1 (which corresponds to January).
+        # We check if current_month has gone below 1 (which corresponds to January).
         # If it has, we decrement the current_year by 1 to move to the previous year,
         # and we set current_month to 12 to wrap around to December.
         if current_month <= 0:
@@ -94,9 +94,7 @@ rikishi_array = []
 # statement because to me it makes more sense/ is easier
 if not ((datetime(2023, 9, 24) <= current_date <= datetime(2023, 10, 29)) or (datetime(2023, 11, 27) <= current_date <= datetime(2023, 12, 24)) or (datetime(2024, 1, 28) <= current_date <= datetime(2024, 2, 25)) or (datetime(2024, 3, 24) <= current_date <= datetime(2024, 4, 29)) or (datetime(2024, 5, 26) <= current_date <= datetime(2024, 6, 30)) or (datetime(2024, 7, 28) <= current_date <= datetime(2024, 8, 25)) or (datetime(2024, 9, 22) <= current_date <= datetime(2024, 10, 27)) or (datetime(2024, 11, 25) <= current_date <= datetime(2024, 12, 23))):
     # First we need to grab the current banzuke but JUST the names
-    # to eventually check if those names are in our rikishi dictionary we'll eventually put this
-    # into a loop that makes sure
-    # there is a current banzuke to check based on certain dates
+    # to eventually check if those names are in our rikishi dictionary
     this_year = current_date.year
     this_month = current_date.month
     new_banzuke_url = f"{base_url}?b={this_year}{this_month:02d}&heya=-1&shusshin=-1"
@@ -172,9 +170,8 @@ if not ((datetime(2023, 9, 24) <= current_date <= datetime(2023, 10, 29)) or (da
                         columns = row.find_all("td")
 
                         # Ensure that there are at least 2 columns (name and score) some rows have a collumn
-                        # with an emptycell
-                        # filling up a row spot. So we want to make sure the ones that start with that
-                        # go to the next loop and
+                        # with an emptycell filling up a row spot.
+                        # So we want to make sure the ones that start with that go to the next loop and
                         # instead check the specific indexes that the rikishi name and score are at in those scenarios
 
                         if len(columns) >= 2 and "emptycell" not in columns[0].get("class", []):
